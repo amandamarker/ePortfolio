@@ -6,15 +6,26 @@
     <title>Amanda Brady</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/279ed771f5.js" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "-q7ZhcBg4TMjCyFvg",
+      });
+   })();
+</script>
 </head>
 <body>
-    <section id="landing-page">
+    <section id="landing-page" onmousemove="moveBackground(event)">
         <nav>
             <figure>
                 <img class="personal-logo" src ="A.png" alt="">
             </figure>
             <ul class="nav__link--list">
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleModal()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
@@ -22,25 +33,25 @@
                     ">About</a>
                 </li>
                 <li class="nav__link">
-                    <a href="#" class="
+                    <a href="#projects" class="
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black
                     ">Projects</a>
                 </li>
-                <li class="nav__link">
+                <li class="nav__link" onclick="toggleModal()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black
                     ">Contact</a>
                 </li>
-                <li class="nav__link click">
+                <li class="nav__link click" onclick="toggleContrast()">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
                     link__hover-effect--black
-                    "><i class="fa-solid fa-circle-half-stroke"></i>
+                    "><i class="fa-solid fa-circle-half-stroke"></i></a>
                 </li>
             </ul>
         </nav>
@@ -51,25 +62,88 @@
                 <p class="header__para">
                     I'm a <b class="purple">Frontend Software Engineer</b> with a keen eye for detail.
                     <br>
-                    Here's a bit more <b class="purple">about me.</b>
+                    Here's a bit more <b class="purple click" onclick="toggleModal()">about me.</b>
                 </p>
                 <div class="social__list">
                     <a href="" class="social__link click">
                         <i class="fab fa-linkedin-in"></i>
                     <a href="" class="social__link click">
                         <i class="fab fa-github"></i>
-                    <a href="" target="_blank" class="social__link click">
+                    <a href="Resume 2025.pdf" target="_blank" class="social__link click">
                         <i class="fas fa-file-pdf"></i>        
                     </a>
                 </div>
             </div>
         </header>
-        <button class="mail__btn click">
+        <button class="mail__btn click" onclick="toggleModal()">
             <i class="fas fa-envelope"></i>
         </button>
         <a href="#projects" class="scroll">
             <div class="scroll__icon click"></div>
         </a>
+        <div class="modal">
+            <div class="modal__half modal__about">
+                <h3 class="modal__title">Here's a bit about me.</h3>
+                <h4 class="modal__sub-title modal__sub-title--about">Frontend Software Engineer</h4>
+                <p class="modal__para">I am a <b class="purple">frontend software engineer</b> with a various background that allows me to think outside the box and problem solve.
+                    <br>
+                    I am an easy going worker that enjoys collaborating with others to <b class="purple">create beautiful and functional web applications.</b>
+                </p>
+                <div class="modal__languages">
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="HTML.png" alt="">
+                        <span class="language__name">HTML</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="CSS.png" alt="">
+                        <span class="language__name">CSS</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="Javascript.png" alt="">
+                        <span class="language__name">Javascript</span>
+                    </figure>
+            </div>
+            </div>
+            <div class="modal__half modal__contact">
+                <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+                <h3 class="modal__title modal__title--contact">
+                    Let's get in touch!
+                </h3>
+                <h4 class="modal__sub-title modal__sub-title--contract">
+                    I am currently open to new opportunities.
+                </h4>
+                <form id="contact__form" onsubmit="contact(event)">
+                    <div class="form__item">
+                        <label class="form__item--label">Name</label>
+                        <input class="input" name="user_name" type="text" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Email</label>
+                        <input class="input" name="user_email" type="text" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Message</label>
+                        <textarea class="input" name="message" type="text" required></textarea>
+                    </div>
+                    <button id="contact__submit" class="form__submit">Send it my way</button>
+                </form>
+                <div class="modal__overlay modal__overlay--loading">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="modal__overlay modal__overlay--success">
+                    Thanks for reaching out! I look forward to connecting with you.
+                </div>
+            </div>
+        </div>
+        <img src="semi circle.svg" class="shape shape--0">
+        <img src="circle.svg" class="shape shape--1">
+        <img src="squiggly.svg" class="shape shape--2">
+        <img src="circle.svg" class="shape shape--3">
+        <img src="triangle.svg" class="shape shape--4">
+        <img src="circle.svg" class="shape shape--5">
+        <img src="squiggly.svg" class="shape shape--6">
+        <img src="circle.svg" class="shape shape--7">
+        <img src="semi circle.svg" class="shape shape--8">
     </section>
     <section class="projects">
         <div class="container">
@@ -165,7 +239,7 @@
                 ">
                 Github
             </a>
-             <a href="#" class="
+             <a href="#" target="_blank" class="
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
@@ -176,10 +250,10 @@
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
-                ">
+                " onclick="toggleModal()">
                 Contact
             </a>
-             <a href="#" class="
+             <a href="Resume 2025.pdf" target="_blank" class="
                 footer__social--link
                 link__hover-effect
                 link__hover-effect--white
